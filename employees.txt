@@ -1,0 +1,3 @@
+Alice,40,15
+Bob,35,20
+Charlie,45,18
