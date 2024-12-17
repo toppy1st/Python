@@ -68,3 +68,42 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+
+import random
+
+# Function to generate a multiplication table of random numbers
+def gen(n):
+    table = []  # Initialize an empty list
+    for i in range(1, n+1):  # Rows from 1 to n
+        row = []  
+        for j in range(1, n+1):  # Columns from 1 to n
+            row.append(random.randint(1, 100))  # Generate random numbers between 1 and 100
+        table.append(row)  # Add the row to the table
+    return table
+
+# Function to save the table to a file
+def save(table, filename):
+    with open(filename, 'w') as file:
+        for row in table:  # Loop through each row
+            line = " ".join(map(str, row))  # Convert numbers to strings and join them with spaces
+            file.write(line + "\n")  # Write each row to the file with a newline
+    print(f"Table saved to '{filename}'.")
+
+# Function to display the table
+def display_table(table):
+    for row in table:
+        print(" ".join(map(str, row)))  # Print rows with numbers separated by spaces
+
+# Main Program
+if __name__ == "__main__":
+    n = int(input("Enter the size of the table (n x n): "))  # Ask user for table size
+    table = gen(n)  # Generate the table
+    print("\nGenerated Table:")
+    display_table(table)  # Display the table to the user
+    
+    filename = "table.txt"  # File to save the table
+    save(table, filename)  # Save the table to a file
+    print("\nTable has been saved successfully.")
+
